@@ -1,0 +1,13 @@
+{
+  "name": "web",
+  "active": true,
+  "events": [
+    "push",
+    "pull_request",
+    "deployment"
+  ],
+  "config": {
+    "url": "$url",
+    "content_type": "json"
+  }
+}

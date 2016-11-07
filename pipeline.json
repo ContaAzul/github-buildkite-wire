@@ -1,0 +1,25 @@
+{
+  "name": "$repo",
+  "repository": "git@github.com:$org/$repo.git",
+  "steps": [
+    {
+      "type": "script",
+      "name": ":pipeline:",
+      "command": "buildkite-agent pipeline upload",
+      "artifact_paths": "",
+      "branch_configuration": "",
+      "env": {
+
+      },
+      "timeout_in_minutes": null,
+      "agent_query_rules": [
+
+      ],
+      "concurrency": null,
+      "parallelism": null
+    }
+  ],
+  "provider_settings": {
+    "build_pull_request_forks": true
+  }
+}
