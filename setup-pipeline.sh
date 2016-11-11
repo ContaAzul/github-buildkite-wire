@@ -1,4 +1,5 @@
 #!/bin/bash
+set -eo pipefail
 org="$1"
 repo="$2"
 echo "~~~ Creating pipeline"
