@@ -1,6 +1,8 @@
 {
   "name": "$repo",
+  "slug": "$repo",
   "repository": "git@github.com:$org/$repo.git",
+  "default_branch": "master",
   "steps": [
     {
       "type": "script",
@@ -8,23 +10,27 @@
       "command": "buildkite-agent pipeline upload",
       "artifact_paths": "",
       "branch_configuration": "",
-      "env": {
-
-      },
+      "env": {},
       "timeout_in_minutes": null,
-      "agent_query_rules": [
-
-      ],
+      "agent_query_rules": [],
       "concurrency": null,
       "parallelism": null
     }
   ],
-  "provider_settings": {
-    "build_pull_request_forks": true,
-    "publish_commit_status": true,
-    "build_pull_requests": true,
-    "build_tags": true,
-    "skip_pull_request_builds_for_existing_commits": true,
-    "pull_request_branch_filter_enabled": false
-  }
+  "provider": {
+    "id": "github",
+    "settings": {
+      "trigger_mode": "code",
+      "build_pull_requests": true,
+      "pull_request_branch_filter_enabled": false,
+      "skip_pull_request_builds_for_existing_commits": true,
+      "build_pull_request_forks": true,
+      "prefix_pull_request_fork_branch_names": true,
+      "build_tags": true,
+      "publish_commit_status": true,
+      "publish_commit_status_per_step": false,
+      "repository": "$org/$repo",
+      "pull_request_branch_filter_configuration": ""
+    }
+  },
 }
