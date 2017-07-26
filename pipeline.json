@@ -32,5 +32,5 @@
       "repository": "$org/$repo",
       "pull_request_branch_filter_configuration": ""
     }
-  },
+  }
 }
