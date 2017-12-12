@@ -7,11 +7,6 @@ curl --fail -s -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPOST \
 	"https://api.buildkite.com/v2/organizations/$org/pipelines" \
 	-d @<(sed -e "s/\$org/$org/g" -e "s/\$repo/$repo/g" pipeline.json)
 
-# YEAS, THIS IS CRAP BUT YEAH WATF
-curl --fail -s -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPATCH \
-	"https://api.buildkite.com/v2/organizations/$org/pipelines/$repo" \
-	-d @<(sed -e "s/\$org/$org/g" -e "s/\$repo/$repo/g" pipeline.json)
-
 echo "~~~ Setting up webhooks"
 url="$(
 	curl -s -H "Authorization: Bearer $BUILDKITE_TOKEN" \
