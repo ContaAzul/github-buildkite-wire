@@ -2,6 +2,9 @@
 set -eo pipefail
 org="$1"
 repo="$2"
+
+sed -e "s/\$org/$org/g" -e "s/\$repo/$repo/g" pipeline.json
+
 echo "~~~ Creating pipeline"
 curl --fail --trace-ascii /dev/stdout -iv -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPOST \
 	"https://api.buildkite.com/v2/organizations/$org/pipelines" \
