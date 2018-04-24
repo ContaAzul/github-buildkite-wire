@@ -3,7 +3,7 @@ set -eo pipefail
 org="$1"
 repo="$2"
 echo "~~~ Creating pipeline"
-curl --fail -iv -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPOST \
+curl --fail --trace-ascii /dev/stdout -iv -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPOST \
 	"https://api.buildkite.com/v2/organizations/$org/pipelines" \
 	-d @<(sed -e "s/\$org/$org/g" -e "s/\$repo/$repo/g" pipeline.json)
 
