@@ -9,17 +9,21 @@
       "command": "buildkite-agent pipeline upload"
     }
   ],
+  "default_branch": "master",
+  "branch_configuration": "master this-will-never-exist",
   "provider_settings": {
     "trigger_mode": "code",
+    "repository": "$org/$repo",
+    "build_tags": false,
     "build_pull_requests": true,
-    "pull_request_branch_filter_enabled": false,
-    "skip_pull_request_builds_for_existing_commits": true,
+    "pull_request_branch_filter_enabled": true,
+    "pull_request_branch_filter_configuration": "",
     "build_pull_request_forks": true,
     "prefix_pull_request_fork_branch_names": true,
-    "build_tags": true,
+    "skip_pull_request_builds_for_existing_commits": true,
     "publish_commit_status": true,
     "publish_commit_status_per_step": false,
-    "repository": "$org/$repo",
-    "pull_request_branch_filter_configuration": ""
+    "publish_blocked_as_pending": true,
+    "separate_pull_request_statuses": false
   }
 }
