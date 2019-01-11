@@ -10,7 +10,7 @@
     }
   ],
   "default_branch": "master",
-  "branch_configuration": "master this-will-never-exist",
+  "branch_configuration": "master",
   "provider_settings": {
     "trigger_mode": "code",
     "repository": "$org/$repo",
