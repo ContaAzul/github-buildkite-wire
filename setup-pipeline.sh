@@ -4,14 +4,17 @@ org="$1"
 repo="$2"
 
 echo "~~~ Creating pipeline"
-curl --fail -s -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPOST \
-	"https://api.buildkite.com/v2/organizations/$org/pipelines" \
-	-d @<(sed -e "s/\$org/$org/g" -e "s/\$repo/$repo/g" pipeline.json)
+slug="$(
+	curl --fail -s -H "Authorization: Bearer $BUILDKITE_TOKEN" -XPOST \
+		"https://api.buildkite.com/v2/organizations/$org/pipelines" \
+		-d @<(sed -e "s/\$org/$org/g" -e "s/\$repo/$repo/g" pipeline.json) |
+		jq -r '.slug'
+)"
 
-echo "~~~ Setting up webhooks"
+echo "~~~ Setting up webhooks for Buildkite pipeline: $slug"
 url="$(
 	curl -s -H "Authorization: Bearer $BUILDKITE_TOKEN" \
-		"https://api.buildkite.com/v2/organizations/$org/pipelines/$repo" |
+		"https://api.buildkite.com/v2/organizations/$org/pipelines/$slug" |
 		jq -r '.provider.webhook_url'
 )"
 
